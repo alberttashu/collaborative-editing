@@ -1,0 +1,23 @@
+version: '3'
+services:
+  couchdb:
+    build:
+      context: ./couchDB
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "5984:5984"
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=password
+  # couchdb:
+  #   image: couchdb
+  #   restart: always
+  #   ports:
+  #     - "5984:5984"
+  #   environment:
+  #     - COUCHDB_USER=admin
+  #     - COUCHDB_PASSWORD=password
+  #   volumes:
+  #     - ./couchDB/local.ini:/opt/couchdb/etc/local.d/local.ini
+    #     - ./dbdata:/opt/couchdb/data
