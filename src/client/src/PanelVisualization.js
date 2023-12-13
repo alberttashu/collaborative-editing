@@ -1,5 +1,5 @@
 
-const Panel = ({ panel, onUpdate }) => {
+const PanelVisualization = ({ panel, onUpdate }) => {
   const { counter, list, switches } = panel;
 
   const handleSwitchToggle = (switchName) => {
@@ -64,4 +64,4 @@ const Panel = ({ panel, onUpdate }) => {
   );
 };
 
-export default Panel;
+export default PanelVisualization;
