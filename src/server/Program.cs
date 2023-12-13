@@ -1,5 +1,3 @@
-using CouchDB.Driver;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
