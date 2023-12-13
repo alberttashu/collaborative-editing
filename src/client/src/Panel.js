@@ -7,12 +7,10 @@ import PanelVisualization from './PanelVisualization';
 export const Panel = () => {
     const { id } = useParams();
     const [panel, setPanel] = useState(null);
-    const [fetching, setFetching] = useState(false);
 
     useEffect(() => {
         const fetchPanel = async () => {
             try {
-                setFetching(true);
                 const response = await axios.get(`http://localhost:5001/panels/${id}`);
                 const { panel: fetchedPanel } = response.data;
 
@@ -63,14 +61,9 @@ export const Panel = () => {
             catch (error) {
                 console.error('Error fetching document:', error);
             }
-            finally {
-                setFetching(false);
-            }
         };
 
-        if (!fetching) {
-            fetchPanel();
-        }
+        fetchPanel();
     }, [id]);
 
     const onUpdate = async (updatedPanel) => {
@@ -110,7 +103,7 @@ export const Panel = () => {
     return (
         <div>
             {panel
-                ? <PanelVisualization panel={panel} onUpdate={onUpdate} />
+                ? <PanelVisualization id={id} panel={panel} onUpdate={onUpdate} />
                 : "PANEL NOT LOADED"}
         </div>
     );
